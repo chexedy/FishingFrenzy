@@ -25,6 +25,7 @@ border_color = Color(0.25098, 0.678431, 0.215686, 1)
 bg_color = Color(1, 1, 1, 1)
 
 [node name="Main" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_wrrex")
 
 [node name="MenuNode" type="Node2D" parent="."]

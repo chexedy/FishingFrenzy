@@ -11,6 +11,7 @@ height = 80.0
 size = Vector2(21.2766, 93.617)
 
 [node name="Fish" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_qeqyc")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]

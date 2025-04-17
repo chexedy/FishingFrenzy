@@ -56,6 +56,7 @@ bg_color = Color(0.25098, 0.678431, 0.215686, 1)
 bg_color = Color(0.25098, 0.678431, 0.215686, 1)
 
 [node name="Game" type="Node2D"]
+texture_filter = 2
 script = ExtResource("1_d3qom")
 
 [node name="ColorRect" type="ColorRect" parent="."]
