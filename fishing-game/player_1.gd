@@ -28,13 +28,13 @@ func _process(delta: float) -> void:
 		if !is_run_fishing_running:
 			run_fishing();
 
-		var direction = Input.get_vector("move_left1", "move_right1", "move_up1", "move_down1");
+		var direction = Input.get_vector("move_left0", "move_right0", "move_up0", "move_down0");
 		hook.velocity = direction * pos_change;
 		hook.move_and_slide();
 
 func _input(event: InputEvent) -> void:
 	if currently_fishing:
-		if Input.is_action_just_pressed("select_button1"):
+		if Input.is_action_just_pressed("select_button0"):
 				stop_fishing_button.emit();
 				return;	
 
@@ -71,8 +71,10 @@ func run_fishing() -> void:
 		self.get_node("FishResult").get_node("VBoxContainer").get_node("Name").text = "[center] You caught [/center]"
 		self.get_node("FishResult").get_node("VBoxContainer").get_node("FishResult").text = "[center] Nothing : ( [/center]";
 		self.get_node("FishResult").visible = true;
+		player.get_node("CharacterBody2D").visible = false;
 		await get_tree().create_timer(3).timeout;
 		self.get_node("FishResult").visible = false;
+		player.get_node("CharacterBody2D").visible = true;
 		is_run_fishing_running = false;
 		return;
 
