@@ -1,9 +1,9 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1744907397
+::res://::1744919436
 arrow.png::CompressedTexture2D::2473568813274511980::1744902561::1744903563::1::::<><>::
 boat.png::CompressedTexture2D::705147539521515314::1744902561::1744903563::1::::<><>::
 crosshair.webp::CompressedTexture2D::624057147200594709::1744902561::1744903563::1::::<><>::
-export_presets.cfg::TextFile::-1::1744906630::0::1::::<><>::
+export_presets.cfg::TextFile::-1::1744907540::0::1::::<><>::
 fish.gd::GDScript::-1::1744902561::0::1::::<>Node2D<>::
 Fish.tscn::PackedScene::1067829660576559715::1744906995::0::1::::<><>::res://fish.gd<>uid://xumlwfxganji::::res://fish_eyes.png
 FishGame.tscn::PackedScene::37058576602253113::1744906995::0::1::::<><>::res://fish_game.gd<>uid://cnocd4m44isdv::::res://pond.jpg<>res://pond.gd<>uid://bbihk1n4lphjw::::res://arrow.png<>res://player_1.gd<>uid://kbtxas7dirdy::::res://boat.png<>uid://c7hxj6uolnsme::::res://guy.png<>uid://i5keolbesqxx::::res://crosshair.webp<>uid://chr1vkhpw6yla::::res://Super Lobster.ttf<>res://player_2.gd
@@ -16,7 +16,7 @@ guy.png::CompressedTexture2D::7034749230831700156::1744902561::1744903563::1::::
 icon.svg::CompressedTexture2D::4600869538112875356::1744902561::1744903563::1::::<><>::
 library.gd::GDScript::-1::1744902561::0::1::::LibraryData<>Node<>::
 main.gd::GDScript::-1::1744903775::0::1::::<>Node2D<>::
-MainMenu.tscn::PackedScene::6867411211216798995::1744906995::0::1::::<><>::res://main.gd<>uid://chr1vkhpw6yla::::res://Super Lobster.ttf<>uid://xumlwfxganji::::res://fish_eyes.png<>uid://bbihk1n4lphjw::::res://arrow.png<>uid://cnocd4m44isdv::::res://pond.jpg<>uid://i5keolbesqxx::::res://crosshair.webp
+MainMenu.tscn::PackedScene::6867411211216798995::1744907507::0::1::::<><>::res://main.gd<>uid://chr1vkhpw6yla::::res://Super Lobster.ttf<>uid://xumlwfxganji::::res://fish_eyes.png<>uid://bbihk1n4lphjw::::res://arrow.png<>uid://cnocd4m44isdv::::res://pond.jpg<>uid://i5keolbesqxx::::res://crosshair.webp
 Marimpa.ttf::FontFile::5584627281834815097::1744902561::1744903563::1::::<><>::
 player_1.gd::GDScript::-1::1744904590::0::1::::<>Control<>::
 player_2.gd::GDScript::-1::1744905131::0::1::::<>Control<>::
