@@ -67,6 +67,14 @@ text = "Group 3 | Rutgers COGS | Spring 2025"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label3" type="Label" parent="MenuNode/MainMenuContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fp0in")
+theme_override_font_sizes/font_size = 30
+text = "PC Edition"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="RightSide" type="VBoxContainer" parent="MenuNode/MainMenuContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
