@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://phi87i7ujhfv"]
+
+[ext_resource type="Script" path="res://fish.gd" id="1_qeqyc"]
+[ext_resource type="Texture2D" uid="uid://xumlwfxganji" path="res://fish_eyes.png" id="2_ajt6b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8y2qs"]
+radius = 39.0
+height = 80.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k7b0"]
+size = Vector2(21.2766, 93.617)
+
+[node name="Fish" type="Node2D"]
+script = ExtResource("1_qeqyc")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(0.75, 0.75)
+collision_mask = 2
+
+[node name="FishSprite" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ajt6b")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+scale = Vector2(0.812222, 0.812222)
+shape = SubResource("CapsuleShape2D_8y2qs")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-25.3333, -9.53674e-07)
+scale = Vector2(0.626667, 0.626667)
+shape = SubResource("RectangleShape2D_8k7b0")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+scale = Vector2(0.75, 0.75)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.812222, 0.812222)
+shape = SubResource("CapsuleShape2D_8y2qs")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-25.3333, -9.53674e-07)
+scale = Vector2(0.626667, 0.626667)
+shape = SubResource("RectangleShape2D_8k7b0")
