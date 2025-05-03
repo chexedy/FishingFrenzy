@@ -34,7 +34,14 @@ func setup(rarity, speed, color):
 	self.color = color;
 	self.modulate = color;
 	self.speed = speed;
+	
 	body.velocity = speed;
+	if rarity == "Rare":
+		sprite.speed_scale = 1.5;
+	elif rarity == "Epic":
+		sprite.speed_scale = 2;
+	elif rarity == "Legendary":
+		sprite.speed_scale = 3
 
 func _physics_process(delta: float) -> void:
 	if is_fishable:
@@ -54,6 +61,7 @@ func get_rarity():
 
 func destroy_fish():
 	is_fishable = false;
+	sprite.stop();
 	var tween = get_tree().create_tween();
 	tween.tween_property(self, "modulate:a", 0, 3);		
 	await tween.finished;

@@ -3,7 +3,7 @@ extends Control
 
 var data = LibraryData.new();
 var current_score = 0;
-const plr_id = 1;
+const plr_id = 3;
 var rarity = ["Common", "Rare", "Epic", "Legendary"];
 var currently_fishing = false;
 var is_run_fishing_running = false;
@@ -22,19 +22,18 @@ func _ready() -> void:
 	for key in data.fish_odds:
 		bar.get_node(key).size_flags_stretch_ratio = data.fish_odds[key];
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if currently_fishing:
 		if !is_run_fishing_running:
 			run_fishing();
 
-		var direction = Input.get_vector("move_left1", "move_right1", "move_up1", "move_down1");
+		var direction = Input.get_vector("move_left3", "move_right3", "move_up3", "move_down3");
 		hook.velocity = direction * pos_change;
 		hook.move_and_slide();
 
 func _input(event: InputEvent) -> void:
 	if currently_fishing:
-		if Input.is_action_just_pressed("select_button1"):
+		if Input.is_action_just_pressed("select_button3"):
 				stop_fishing_button.emit();
 				return;	
 
@@ -107,14 +106,14 @@ func run_fishing() -> void:
 
 	var selected_fish = data.fish_rarity[selected_rarity].pick_random();
 	_on_game_add_score(plr_id, data.fish_score[selected_rarity]);
-	
+
 	self.get_node("FishResult").visible = true;
 	self.get_node("FishResult").get_node("VBoxContainer").get_node("Name").text = "[center] You caught a " + selected_rarity + " [/center]"
 	self.get_node("FishResult").get_node("VBoxContainer").get_node("FishResult").text = "[center]" + selected_fish + "![/center]";
 
-	player.get_node("CharacterBody2D").visible = true;
 	await get_tree().create_timer(1).timeout;
-	
+
+	player.get_node("CharacterBody2D").visible = true;
 	self.get_node("FishResult").visible = false;
 	is_run_fishing_running = false;
 

@@ -1,1 +1,4 @@
-res://library.gd
+res://fish_game.gd
+res://FishGame.tscn
+res://MainMenu.tscn
+res://main.gd

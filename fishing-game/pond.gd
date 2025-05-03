@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	pass;
 	t += delta;
 
-	if fish_amount <= 15 and t >= 2.5:
+	if fish_amount <= 15 and t >= 1.5:
 		add_fish();
 		t = 0.0;
 
