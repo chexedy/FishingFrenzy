@@ -1,7 +1,7 @@
 #full game controller
 
 extends Node2D
-var plr_count = 1;
+var plr_count = 2;
 var timer_status = 0;
 var scores = {
 	"Player 1" = 0,
@@ -49,16 +49,6 @@ func _input(event: InputEvent) -> void:
 		if Input.is_action_just_pressed("back_button") or Input.is_action_just_pressed("select_button"):
 			close_the_game.emit();
 
-func setup(player_data) -> void:
-	plr_count = player_data.size()
-
-	for i in player_data.size():
-		players.get_node("Player" + str(i+1)).visible = true;
-		players.get_node("Player" + str(i+1)).get_node("guy").modulate = player_data[i].color;
-		players.get_node("Player" + str(i+1)).get_node("CharacterBody2D").modulate = player_data[i].color;
-		players.get_node("Player" + str(i+1)).visible = true;
-		stats.get_node("Player" + str(i+1)).visible = true;
-
 func controller() -> void:
 	self.get_node("StartMusic").play();
 	for n in range(3, -0, -1):	
@@ -97,52 +87,19 @@ func controller() -> void:
 		sorted_scores[highest_name] = scores[highest_name];
 		scores_copy.erase(highest_name);
 
-	if plr_count == 1:
-		placements.get_node("FirstPlace").text = "1st: " + sorted_scores.keys()[0] + " with " + str(sorted_scores.values()[0]) + " Coins!";
-	elif plr_count == 2:
-		placements.get_node("FirstPlace").text = "1st: " + sorted_scores.keys()[0] + " with " + str(sorted_scores.values()[0]) + " Coins!";
-		placements.get_node("SecondPlace").text = "2nd: " + sorted_scores.keys()[1] + " with " + str(sorted_scores.values()[1]) + " Coins!";
-		placements.get_node("SecondPlace").visible = true;
-	elif plr_count == 3:
+	if (sorted_scores.values()[0] == sorted_scores.values()[1]):
+		placements.get_node("FirstPlace").text = "It's a Draw!"
+		placements.get_node("SecondPlace").text = "Both players got " + str(sorted_scores.values()[0]) + " Coins!";
+	else:
 		placements.get_node("FirstPlace").text = "1st: " + sorted_scores.keys()[0] + " with " + str(sorted_scores.values()[0]) + " Coins!";
 		placements.get_node("SecondPlace").text = "2nd: " + sorted_scores.keys()[1] + " with " + str(sorted_scores.values()[1]) + " Coins!";
-		placements.get_node("ThirdPlace").text = "3rd: " + sorted_scores.keys()[2] + " with " + str(sorted_scores.values()[2]) + " Coins!";
-		placements.get_node("SecondPlace").visible = true;
-		placements.get_node("ThirdPlace").visible = true;
-	elif plr_count == 4:
-		placements.get_node("FirstPlace").text = "1st: " + sorted_scores.keys()[0] + " with " + str(sorted_scores.values()[0]) + " Coins!";
-		placements.get_node("SecondPlace").text = "2nd: " + sorted_scores.keys()[1] + " with " + str(sorted_scores.values()[1]) + " Coins!";
-		placements.get_node("ThirdPlace").text = "3rd: " + sorted_scores.keys()[2] + " with " + str(sorted_scores.values()[2]) + " Coins!";
-		placements.get_node("FourthPlace").text = "4th: " + sorted_scores.keys()[3] + " with " + str(sorted_scores.values()[3]) + " Coins :("
-		placements.get_node("SecondPlace").visible = true;
-		placements.get_node("ThirdPlace").visible = true;
-		placements.get_node("FourthPlace").visible = true;
 
 	results.visible = true;
 	for plr in players.get_children():
 		plr.get_node("CharacterBody2D").visible = false;
 		results.get_node("MainMenuContainer").get_node("MarginContainer").get_node("VBoxContainer").get_node("HBoxContainer").get_node("ExitToMenu").grab_focus();
 
-	if plr_count == 1:
-		sorted_scores.erase("Player 2")
-		sorted_scores.erase("Player 3")
-		sorted_scores.erase("Player 4")
-	elif plr_count == 2:
-		sorted_scores.erase("Player 3")
-		sorted_scores.erase("Player 4")
-	elif plr_count == 3: 
-		sorted_scores.erase("Player 4")
-	
-	print(sorted_scores)
-	
-	var results_data = []
-	for key in sorted_scores:
-		results_data.append(MinigameManager.PlayerResultData.new(int(key.substr(6))-1, sorted_scores[key]));
-	
-	print(results_data)
-	MinigameManager.apply_results(results_data);
 	play_result_music();
-		
 	await close_the_game;
 
 func _on_time_remaining_timeout():

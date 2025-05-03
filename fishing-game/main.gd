@@ -13,8 +13,6 @@ func _ready() -> void:
 	buttons.get_node("StartGame").pressed.connect(start_the_game);
 	buttons.get_node("StartGame").grab_focus();
 
-	MinigameManager.game_started.connect(game_started_func)
-
 func _input(event: InputEvent) -> void:
 	var buttons = self.get_node("MenuNode").get_node("MainMenuContainer").get_node("HBoxContainer").get_node("RightSide").get_node("MarginContainer").get_node("Buttons");
 
@@ -54,8 +52,6 @@ func start_the_game() -> void:
 	self.get_node("MenuAudio").playing = false;
 	
 	self.add_child(game);
-	if data_array:
-		game.setup(data_array);
 
 	game.visible = true;
 	self.get_node("MenuNode").visible = false;
@@ -64,7 +60,6 @@ func start_the_game() -> void:
 	self.get_node("MenuNode").get_node("MainMenuContainer").get_node("HBoxContainer").get_node("RightSide").get_node("MarginContainer").get_node("Buttons").get_node("StartGame").text = "Start Game";
 
 	await game.controller();
-	MinigameManager.end_game();
 	self.get_node("MenuNode").visible = true;
 	self.get_node("MenuNode").get_node("MainMenuContainer").get_node("HBoxContainer").get_node("RightSide").get_node("MarginContainer").get_node("Buttons").get_node("StartGame").grab_focus();
 	game.queue_free();
@@ -72,7 +67,7 @@ func start_the_game() -> void:
 	buttons.get_node("StartGame").disabled = false;
 	self.get_node("MenuAudio").playing = true;
 	var tween2 = get_tree().create_tween();
-	tween2.tween_property(self.get_node("MenuAudio"), "volume_db", 5, 5)
+	tween2.tween_property(self.get_node("MenuAudio"), "volume_db", 5, 2.5)
 
 func open_fishing_library() -> void:
 	self.get_node("FishLibraryNode").visible = true;

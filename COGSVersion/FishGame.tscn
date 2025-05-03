@@ -1,0 +1,1092 @@
+[gd_scene load_steps=33 format=4 uid="uid://r7l43syej6x"]
+
+[ext_resource type="Script" path="res://fish_game.gd" id="1_d3qom"]
+[ext_resource type="Texture2D" uid="uid://16tecv3yr8u" path="res://grass.png" id="2_0bwwf"]
+[ext_resource type="Script" path="res://pond.gd" id="2_4o6vf"]
+[ext_resource type="Texture2D" uid="uid://bbihk1n4lphjw" path="res://arrow.png" id="3_2iydp"]
+[ext_resource type="Texture2D" uid="uid://bnqiywb2kbeum" path="res://water.png" id="3_8d4in"]
+[ext_resource type="Script" path="res://player_1.gd" id="3_pi2lh"]
+[ext_resource type="Texture2D" uid="uid://b5icuvau7ysb1" path="res://boat2.png" id="4_2ru2j"]
+[ext_resource type="Texture2D" uid="uid://c4b5smblnohe2" path="res://fisher.png" id="5_twv3m"]
+[ext_resource type="Texture2D" uid="uid://i5keolbesqxx" path="res://crosshair.webp" id="7_dg1ye"]
+[ext_resource type="FontFile" uid="uid://chr1vkhpw6yla" path="res://Super Lobster.ttf" id="7_mk04g"]
+[ext_resource type="Script" path="res://player_2.gd" id="10_boexo"]
+[ext_resource type="Script" path="res://player_3.gd" id="11_xkj16"]
+[ext_resource type="Script" path="res://player_4.gd" id="12_8hg0b"]
+[ext_resource type="AudioStream" uid="uid://dcfy6i3r4ea0q" path="res://fishmusic.mp3" id="14_42457"]
+[ext_resource type="AudioStream" uid="uid://bjctndqdx2vir" path="res://start.mp3" id="15_lji8r"]
+[ext_resource type="AudioStream" uid="uid://x7ks2xug2ssk" path="res://end.mp3" id="16_6ygsm"]
+[ext_resource type="AudioStream" uid="uid://ufxcc5pbdt6k" path="res://results.mp3" id="17_8wwuu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_agsvs"]
+texture = ExtResource("2_0bwwf")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bysll"]
+sources/0 = SubResource("TileSetAtlasSource_agsvs")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ree2q"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j8qk0"]
+texture = ExtResource("3_8d4in")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_columns = 4
+0:0/animation_frame_0/duration = 0.4
+0:0/animation_frame_1/duration = 0.4
+0:0/animation_frame_2/duration = 0.4
+0:0/animation_frame_3/duration = 0.4
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_crxah"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_j8qk0")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_as14a"]
+size = Vector2(66.2496, 28.3082)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5e68"]
+size = Vector2(133.75, 13.705)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhlnb"]
+size = Vector2(16.838, 16.7938)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7lhr"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n42xn"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe2sy"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 75
+corner_radius_top_right = 75
+corner_radius_bottom_right = 75
+corner_radius_bottom_left = 75
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2gcu"]
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w77w0"]
+bg_color = Color(0.25098, 0.678431, 0.215686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwba0"]
+bg_color = Color(0.25098, 0.678431, 0.215686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xeopv"]
+bg_color = Color(0.25098, 0.678431, 0.215686, 1)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_d3qom")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1921.0
+offset_bottom = 1081.0
+color = Color(0.25098, 0.678431, 0.215686, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD9/wQAAAAAAAAAAAD9/wUAAAAAAAAAAAD9/wYAAAAAAAAAAAD9/wcAAAAAAAAAAAD9/wgAAAAAAAAAAAD9/wkAAAAAAAAAAAD9/woAAAAAAAAAAAD9/wsAAAAAAAAAAAD9/wwAAAAAAAAAAAD9/w0AAAAAAAAAAAD9/w4AAAAAAAAAAAD9/w8AAAAAAAAAAAD9/xAAAAAAAAAAAAD9/xEAAAAAAAAAAAD9/xIAAAAAAAAAAAD9/xMAAAAAAAAAAAD9/xQAAAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD+/wQAAAAAAAAAAAD+/wUAAAAAAAAAAAD+/wYAAAAAAAAAAAD+/wcAAAAAAAAAAAD+/wgAAAAAAAAAAAD+/wkAAAAAAAAAAAD+/woAAAAAAAAAAAD+/wsAAAAAAAAAAAD+/wwAAAAAAAAAAAD+/w0AAAAAAAAAAAD+/w4AAAAAAAAAAAD+/w8AAAAAAAAAAAD+/xAAAAAAAAAAAAD+/xEAAAAAAAAAAAD+/xIAAAAAAAAAAAD+/xMAAAAAAAAAAAD+/xQAAAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAD//wUAAAAAAAAAAAD//wYAAAAAAAAAAAD//wcAAAAAAAAAAAD//wgAAAAAAAAAAAD//wkAAAAAAAAAAAD//woAAAAAAAAAAAD//wsAAAAAAAAAAAD//wwAAAAAAAAAAAD//w0AAAAAAAAAAAD//w4AAAAAAAAAAAD//w8AAAAAAAAAAAD//xAAAAAAAAAAAAD//xEAAAAAAAAAAAD//xIAAAAAAAAAAAD//xMAAAAAAAAAAAD//xQAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAAABEAAAAAAAAAAAAAABIAAAAAAAAAAAAAABMAAAAAAAAAAAAAABQAAAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAABAAkAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAABAA8AAAAAAAAAAAABABAAAAAAAAAAAAABABEAAAAAAAAAAAABABIAAAAAAAAAAAABABMAAAAAAAAAAAABABQAAAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAACAAkAAAAAAAAAAAACAAoAAAAAAAAAAAACAAsAAAAAAAAAAAACAAwAAAAAAAAAAAACAA0AAAAAAAAAAAACAA4AAAAAAAAAAAACAA8AAAAAAAAAAAACABAAAAAAAAAAAAACABEAAAAAAAAAAAACABIAAAAAAAAAAAACABMAAAAAAAAAAAACABQAAAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAgAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAADAA0AAAAAAAAAAAADAA4AAAAAAAAAAAADAA8AAAAAAAAAAAADABAAAAAAAAAAAAADABEAAAAAAAAAAAADABIAAAAAAAAAAAADABMAAAAAAAAAAAADABQAAAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAwAAAAAAAAAAAAEAA0AAAAAAAAAAAAEAA4AAAAAAAAAAAAEAA8AAAAAAAAAAAAEABAAAAAAAAAAAAAEABEAAAAAAAAAAAAEABIAAAAAAAAAAAAEABMAAAAAAAAAAAAEABQAAAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAFAA4AAAAAAAAAAAAFAA8AAAAAAAAAAAAFABAAAAAAAAAAAAAFABEAAAAAAAAAAAAFABIAAAAAAAAAAAAFABMAAAAAAAAAAAAFABQAAAAAAAAAAAAGAP//AAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAAAAAAGAA4AAAAAAAAAAAAGAA8AAAAAAAAAAAAGABAAAAAAAAAAAAAGABEAAAAAAAAAAAAGABIAAAAAAAAAAAAGABMAAAAAAAAAAAAGABQAAAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAHAA4AAAAAAAAAAAAHAA8AAAAAAAAAAAAHABAAAAAAAAAAAAAHABEAAAAAAAAAAAAHABIAAAAAAAAAAAAHABMAAAAAAAAAAAAHABQAAAAAAAAAAAAIAP//AAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAAAAAAAAAAIAA4AAAAAAAAAAAAIAA8AAAAAAAAAAAAIABAAAAAAAAAAAAAIABEAAAAAAAAAAAAIABIAAAAAAAAAAAAIABMAAAAAAAAAAAAIABQAAAAAAAAAAAAJAP//AAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAJAA0AAAAAAAAAAAAJAA4AAAAAAAAAAAAJAA8AAAAAAAAAAAAJABAAAAAAAAAAAAAJABEAAAAAAAAAAAAJABIAAAAAAAAAAAAJABMAAAAAAAAAAAAJABQAAAAAAAAAAAAKAP//AAAAAAAAAAAKAAAAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAAKAA8AAAAAAAAAAAAKABAAAAAAAAAAAAAKABEAAAAAAAAAAAAKABIAAAAAAAAAAAAKABMAAAAAAAAAAAAKABQAAAAAAAAAAAALAP//AAAAAAAAAAALAAAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAA4AAAAAAAAAAAALAA8AAAAAAAAAAAALABAAAAAAAAAAAAALABEAAAAAAAAAAAALABIAAAAAAAAAAAALABMAAAAAAAAAAAALABQAAAAAAAAAAAAMAP//AAAAAAAAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAwAAAAAAAAAAAAMAA0AAAAAAAAAAAAMAA4AAAAAAAAAAAAMAA8AAAAAAAAAAAAMABAAAAAAAAAAAAAMABEAAAAAAAAAAAAMABIAAAAAAAAAAAAMABMAAAAAAAAAAAAMABQAAAAAAAAAAAANAP//AAAAAAAAAAANAAAAAAAAAAAAAAANAAEAAAAAAAAAAAANAAIAAAAAAAAAAAANAAMAAAAAAAAAAAANAAQAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAANAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAoAAAAAAAAAAAANAAsAAAAAAAAAAAANAAwAAAAAAAAAAAANAA0AAAAAAAAAAAANAA4AAAAAAAAAAAANAA8AAAAAAAAAAAANABAAAAAAAAAAAAANABEAAAAAAAAAAAANABIAAAAAAAAAAAANABMAAAAAAAAAAAANABQAAAAAAAAAAAAOAP//AAAAAAAAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAoAAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAwAAAAAAAAAAAAOAA0AAAAAAAAAAAAOAA4AAAAAAAAAAAAOAA8AAAAAAAAAAAAOABAAAAAAAAAAAAAOABEAAAAAAAAAAAAOABIAAAAAAAAAAAAOABMAAAAAAAAAAAAOABQAAAAAAAAAAAAPAP//AAAAAAAAAAAPAAAAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAPAA0AAAAAAAAAAAAPAA4AAAAAAAAAAAAPAA8AAAAAAAAAAAAPABAAAAAAAAAAAAAPABEAAAAAAAAAAAAPABIAAAAAAAAAAAAPABMAAAAAAAAAAAAPABQAAAAAAAAAAAAQAP//AAAAAAAAAAAQAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAkAAAAAAAAAAAAQAAoAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAwAAAAAAAAAAAAQAA0AAAAAAAAAAAAQAA4AAAAAAAAAAAAQAA8AAAAAAAAAAAAQABAAAAAAAAAAAAAQABEAAAAAAAAAAAAQABIAAAAAAAAAAAAQABMAAAAAAAAAAAAQABQAAAAAAAAAAAARAP//AAAAAAAAAAARAAAAAAAAAAAAAAARAAEAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAARAAkAAAAAAAAAAAARAAoAAAAAAAAAAAARAAsAAAAAAAAAAAARAAwAAAAAAAAAAAARAA0AAAAAAAAAAAARAA4AAAAAAAAAAAARAA8AAAAAAAAAAAARABAAAAAAAAAAAAARABEAAAAAAAAAAAARABIAAAAAAAAAAAARABMAAAAAAAAAAAARABQAAAAAAAAAAAASAP//AAAAAAAAAAASAAAAAAAAAAAAAAASAAEAAAAAAAAAAAASAAIAAAAAAAAAAAASAAMAAAAAAAAAAAASAAQAAAAAAAAAAAASAAUAAAAAAAAAAAASAAYAAAAAAAAAAAASAAcAAAAAAAAAAAASAAgAAAAAAAAAAAASAAkAAAAAAAAAAAASAAoAAAAAAAAAAAASAAsAAAAAAAAAAAASAAwAAAAAAAAAAAASAA0AAAAAAAAAAAASAA4AAAAAAAAAAAASAA8AAAAAAAAAAAASABAAAAAAAAAAAAASABEAAAAAAAAAAAASABIAAAAAAAAAAAASABMAAAAAAAAAAAASABQAAAAAAAAAAAATAP//AAAAAAAAAAATAAAAAAAAAAAAAAATAAEAAAAAAAAAAAATAAIAAAAAAAAAAAATAAMAAAAAAAAAAAATAAQAAAAAAAAAAAATAAUAAAAAAAAAAAATAAYAAAAAAAAAAAATAAcAAAAAAAAAAAATAAgAAAAAAAAAAAATAAkAAAAAAAAAAAATAAoAAAAAAAAAAAATAAsAAAAAAAAAAAATAAwAAAAAAAAAAAATAA0AAAAAAAAAAAATAA4AAAAAAAAAAAATAA8AAAAAAAAAAAATABAAAAAAAAAAAAATABEAAAAAAAAAAAATABIAAAAAAAAAAAATABMAAAAAAAAAAAATABQAAAAAAAAAAAAUAP//AAAAAAAAAAAUAAAAAAAAAAAAAAAUAAEAAAAAAAAAAAAUAAIAAAAAAAAAAAAUAAMAAAAAAAAAAAAUAAQAAAAAAAAAAAAUAAUAAAAAAAAAAAAUAAYAAAAAAAAAAAAUAAcAAAAAAAAAAAAUAAgAAAAAAAAAAAAUAAkAAAAAAAAAAAAUAAoAAAAAAAAAAAAUAAsAAAAAAAAAAAAUAAwAAAAAAAAAAAAUAA0AAAAAAAAAAAAUAA4AAAAAAAAAAAAUAA8AAAAAAAAAAAAUABAAAAAAAAAAAAAUABEAAAAAAAAAAAAUABIAAAAAAAAAAAAUABMAAAAAAAAAAAAUABQAAAAAAAAAAAAVAP//AAAAAAAAAAAVAAAAAAAAAAAAAAAVAAEAAAAAAAAAAAAVAAIAAAAAAAAAAAAVAAMAAAAAAAAAAAAVAAQAAAAAAAAAAAAVAAUAAAAAAAAAAAAVAAYAAAAAAAAAAAAVAAcAAAAAAAAAAAAVAAgAAAAAAAAAAAAVAAkAAAAAAAAAAAAVAAoAAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAwAAAAAAAAAAAAVAA0AAAAAAAAAAAAVAA4AAAAAAAAAAAAVAA8AAAAAAAAAAAAVABAAAAAAAAAAAAAVABEAAAAAAAAAAAAVABIAAAAAAAAAAAAVABMAAAAAAAAAAAAVABQAAAAAAAAAAAAWAP//AAAAAAAAAAAWAAAAAAAAAAAAAAAWAAEAAAAAAAAAAAAWAAIAAAAAAAAAAAAWAAMAAAAAAAAAAAAWAAQAAAAAAAAAAAAWAAUAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAcAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAkAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAsAAAAAAAAAAAAWAAwAAAAAAAAAAAAWAA0AAAAAAAAAAAAWAA4AAAAAAAAAAAAWAA8AAAAAAAAAAAAWABAAAAAAAAAAAAAWABEAAAAAAAAAAAAWABIAAAAAAAAAAAAWABMAAAAAAAAAAAAWABQAAAAAAAAAAAAXAP//AAAAAAAAAAAXAAAAAAAAAAAAAAAXAAEAAAAAAAAAAAAXAAIAAAAAAAAAAAAXAAMAAAAAAAAAAAAXAAQAAAAAAAAAAAAXAAUAAAAAAAAAAAAXAAYAAAAAAAAAAAAXAAcAAAAAAAAAAAAXAAgAAAAAAAAAAAAXAAkAAAAAAAAAAAAXAAoAAAAAAAAAAAAXAAsAAAAAAAAAAAAXAAwAAAAAAAAAAAAXAA0AAAAAAAAAAAAXAA4AAAAAAAAAAAAXAA8AAAAAAAAAAAAXABAAAAAAAAAAAAAXABEAAAAAAAAAAAAXABIAAAAAAAAAAAAXABMAAAAAAAAAAAAXABQAAAAAAAAAAAAYAP//AAAAAAAAAAAYAAAAAAAAAAAAAAAYAAEAAAAAAAAAAAAYAAIAAAAAAAAAAAAYAAMAAAAAAAAAAAAYAAQAAAAAAAAAAAAYAAUAAAAAAAAAAAAYAAYAAAAAAAAAAAAYAAcAAAAAAAAAAAAYAAgAAAAAAAAAAAAYAAkAAAAAAAAAAAAYAAoAAAAAAAAAAAAYAAsAAAAAAAAAAAAYAAwAAAAAAAAAAAAYAA0AAAAAAAAAAAAYAA4AAAAAAAAAAAAYAA8AAAAAAAAAAAAYABAAAAAAAAAAAAAYABEAAAAAAAAAAAAYABIAAAAAAAAAAAAYABMAAAAAAAAAAAAYABQAAAAAAAAAAAAZAP//AAAAAAAAAAAZAAAAAAAAAAAAAAAZAAEAAAAAAAAAAAAZAAIAAAAAAAAAAAAZAAMAAAAAAAAAAAAZAAQAAAAAAAAAAAAZAAUAAAAAAAAAAAAZAAYAAAAAAAAAAAAZAAcAAAAAAAAAAAAZAAgAAAAAAAAAAAAZAAkAAAAAAAAAAAAZAAoAAAAAAAAAAAAZAAsAAAAAAAAAAAAZAAwAAAAAAAAAAAAZAA0AAAAAAAAAAAAZAA4AAAAAAAAAAAAZAA8AAAAAAAAAAAAZABAAAAAAAAAAAAAZABEAAAAAAAAAAAAZABIAAAAAAAAAAAAZABMAAAAAAAAAAAAZABQAAAAAAAAAAAAaAP//AAAAAAAAAAAaAAAAAAAAAAAAAAAaAAEAAAAAAAAAAAAaAAIAAAAAAAAAAAAaAAMAAAAAAAAAAAAaAAQAAAAAAAAAAAAaAAUAAAAAAAAAAAAaAAYAAAAAAAAAAAAaAAcAAAAAAAAAAAAaAAgAAAAAAAAAAAAaAAkAAAAAAAAAAAAaAAoAAAAAAAAAAAAaAAsAAAAAAAAAAAAaAAwAAAAAAAAAAAAaAA0AAAAAAAAAAAAaAA4AAAAAAAAAAAAaAA8AAAAAAAAAAAAaABAAAAAAAAAAAAAaABEAAAAAAAAAAAAaABIAAAAAAAAAAAAaABMAAAAAAAAAAAAaABQAAAAAAAAAAAAbAP//AAAAAAAAAAAbAAAAAAAAAAAAAAAbAAEAAAAAAAAAAAAbAAIAAAAAAAAAAAAbAAMAAAAAAAAAAAAbAAQAAAAAAAAAAAAbAAUAAAAAAAAAAAAbAAYAAAAAAAAAAAAbAAcAAAAAAAAAAAAbAAgAAAAAAAAAAAAbAAkAAAAAAAAAAAAbAAoAAAAAAAAAAAAbAAsAAAAAAAAAAAAbAAwAAAAAAAAAAAAbAA0AAAAAAAAAAAAbAA4AAAAAAAAAAAAbAA8AAAAAAAAAAAAbABAAAAAAAAAAAAAbABEAAAAAAAAAAAAbABIAAAAAAAAAAAAbABMAAAAAAAAAAAAbABQAAAAAAAAAAAAcAP//AAAAAAAAAAAcAAAAAAAAAAAAAAAcAAEAAAAAAAAAAAAcAAIAAAAAAAAAAAAcAAMAAAAAAAAAAAAcAAQAAAAAAAAAAAAcAAUAAAAAAAAAAAAcAAYAAAAAAAAAAAAcAAcAAAAAAAAAAAAcAAgAAAAAAAAAAAAcAAkAAAAAAAAAAAAcAAoAAAAAAAAAAAAcAAsAAAAAAAAAAAAcAAwAAAAAAAAAAAAcAA0AAAAAAAAAAAAcAA4AAAAAAAAAAAAcAA8AAAAAAAAAAAAcABAAAAAAAAAAAAAcABEAAAAAAAAAAAAcABIAAAAAAAAAAAAcABMAAAAAAAAAAAAcABQAAAAAAAAAAAAdAP//AAAAAAAAAAAdAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAAdABEAAAAAAAAAAAAdABIAAAAAAAAAAAAdABMAAAAAAAAAAAAdABQAAAAAAAAAAAAeAP//AAAAAAAAAAAeAAAAAAAAAAAAAAAeAAEAAAAAAAAAAAAeAAIAAAAAAAAAAAAeAAMAAAAAAAAAAAAeAAQAAAAAAAAAAAAeAAUAAAAAAAAAAAAeAAYAAAAAAAAAAAAeAAcAAAAAAAAAAAAeAAgAAAAAAAAAAAAeAAkAAAAAAAAAAAAeAAoAAAAAAAAAAAAeAAsAAAAAAAAAAAAeAAwAAAAAAAAAAAAeAA0AAAAAAAAAAAAeAA4AAAAAAAAAAAAeAA8AAAAAAAAAAAAeABAAAAAAAAAAAAAeABEAAAAAAAAAAAAeABIAAAAAAAAAAAAeABMAAAAAAAAAAAAeABQAAAAAAAAAAAAfAP//AAAAAAAAAAAfAAAAAAAAAAAAAAAfAAEAAAAAAAAAAAAfAAIAAAAAAAAAAAAfAAMAAAAAAAAAAAAfAAQAAAAAAAAAAAAfAAUAAAAAAAAAAAAfAAYAAAAAAAAAAAAfAAcAAAAAAAAAAAAfAAgAAAAAAAAAAAAfAAkAAAAAAAAAAAAfAAoAAAAAAAAAAAAfAAsAAAAAAAAAAAAfAAwAAAAAAAAAAAAfAA0AAAAAAAAAAAAfAA4AAAAAAAAAAAAfAA8AAAAAAAAAAAAfABAAAAAAAAAAAAAfABEAAAAAAAAAAAAfABIAAAAAAAAAAAAfABMAAAAAAAAAAAAfABQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_bysll")
+
+[node name="Pond" type="Node2D" parent="."]
+material = SubResource("CanvasItemMaterial_ree2q")
+scale = Vector2(1.6, 1.6)
+script = ExtResource("2_4o6vf")
+metadata/_edit_lock_ = true
+
+[node name="Water" type="TileMapLayer" parent="Pond"]
+position = Vector2(255, 0)
+scale = Vector2(0.985, 0.985)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAABAAkAAAAAAAAAAAABAAoAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAACAAkAAAAAAAAAAAACAAoAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAADAAgAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAKAAAAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_crxah")
+
+[node name="WaterBoundaries" type="StaticBody2D" parent="Pond" groups=["pond_edges"]]
+collision_layer = 2
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pond/WaterBoundaries" groups=["pond_edges"]]
+position = Vector2(915, 336.875)
+scale = Vector2(1, -14.925)
+shape = SubResource("RectangleShape2D_as14a")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pond/WaterBoundaries" groups=["pond_edges"]]
+position = Vector2(287.5, 336.875)
+scale = Vector2(1, -14.925)
+shape = SubResource("RectangleShape2D_as14a")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Pond/WaterBoundaries" groups=["pond_edges"]]
+position = Vector2(601.875, 33.125)
+rotation = 1.5708
+scale = Vector2(0.999999, -14.925)
+shape = SubResource("RectangleShape2D_as14a")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Pond/WaterBoundaries" groups=["pond_edges"]]
+position = Vector2(601.875, 640.625)
+rotation = 1.5708
+scale = Vector2(0.999999, -14.925)
+shape = SubResource("RectangleShape2D_as14a")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Pond/WaterBoundaries" groups=["pond_edges"]]
+position = Vector2(322.1, 66.25)
+rotation = 1.5708
+scale = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_k5e68")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Pond/WaterBoundaries" groups=["pond_edges"]]
+position = Vector2(880, 66.25)
+rotation = 1.5708
+scale = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_k5e68")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Pond/WaterBoundaries" groups=["pond_edges"]]
+position = Vector2(322.725, 607.5)
+rotation = 1.5708
+scale = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_k5e68")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Pond/WaterBoundaries" groups=["pond_edges"]]
+position = Vector2(879.375, 607.5)
+rotation = 1.5708
+scale = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_k5e68")
+
+[node name="Player" type="Node2D" parent="."]
+scale = Vector2(1.6, 1.6)
+metadata/_edit_lock_ = true
+
+[node name="Player1" type="Sprite2D" parent="Player"]
+position = Vector2(322, 65)
+rotation = -0.785398
+texture = ExtResource("4_2ru2j")
+
+[node name="guy" type="TextureRect" parent="Player/Player1"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 192.0
+offset_bottom = 192.0
+rotation = 3.14159
+size_flags_horizontal = 3
+size_flags_vertical = 10
+texture = ExtResource("5_twv3m")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Player/Player1"]
+top_level = true
+position = Vector2(600, 150)
+scale = Vector2(1.6, 1.6)
+collision_layer = 4
+collision_mask = 10
+
+[node name="Area2D" type="Area2D" parent="Player/Player1/CharacterBody2D"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Player1/CharacterBody2D/Area2D"]
+position = Vector2(42.1971, 77.0759)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_hhlnb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Player1/CharacterBody2D"]
+position = Vector2(42.1971, 77.0759)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_hhlnb")
+
+[node name="TextureRect" type="TextureRect" parent="Player/Player1/CharacterBody2D"]
+offset_top = 35.0
+offset_right = 420.0
+offset_bottom = 455.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_dg1ye")
+
+[node name="Player3" type="Sprite2D" parent="Player"]
+visible = false
+position = Vector2(322, 612)
+rotation = 0.785398
+texture = ExtResource("4_2ru2j")
+flip_v = true
+
+[node name="guy" type="TextureRect" parent="Player/Player3"]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+texture = ExtResource("5_twv3m")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Player/Player3"]
+top_level = true
+position = Vector2(600, 690)
+scale = Vector2(1.6, 1.6)
+collision_layer = 4
+collision_mask = 10
+
+[node name="Area2D" type="Area2D" parent="Player/Player3/CharacterBody2D"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Player3/CharacterBody2D/Area2D"]
+position = Vector2(42.1971, 77.0759)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_hhlnb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Player3/CharacterBody2D"]
+position = Vector2(42.1971, 77.0759)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_hhlnb")
+
+[node name="TextureRect" type="TextureRect" parent="Player/Player3/CharacterBody2D"]
+offset_top = 35.0
+offset_right = 420.0
+offset_bottom = 455.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_dg1ye")
+
+[node name="Player2" type="Sprite2D" parent="Player"]
+visible = false
+position = Vector2(883, 65)
+rotation = 0.785398
+texture = ExtResource("4_2ru2j")
+
+[node name="guy" type="TextureRect" parent="Player/Player2"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 192.0
+offset_bottom = 192.0
+rotation = 3.14159
+size_flags_horizontal = 3
+size_flags_vertical = 10
+texture = ExtResource("5_twv3m")
+flip_h = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Player/Player2"]
+top_level = true
+position = Vector2(1180, 150)
+scale = Vector2(1.6, 1.6)
+collision_layer = 4
+collision_mask = 10
+
+[node name="Area2D" type="Area2D" parent="Player/Player2/CharacterBody2D"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Player2/CharacterBody2D/Area2D"]
+position = Vector2(42.1971, 77.0759)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_hhlnb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Player2/CharacterBody2D"]
+position = Vector2(42.1971, 77.0759)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_hhlnb")
+
+[node name="TextureRect" type="TextureRect" parent="Player/Player2/CharacterBody2D"]
+offset_top = 35.0
+offset_right = 420.0
+offset_bottom = 455.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_dg1ye")
+
+[node name="Player4" type="Sprite2D" parent="Player"]
+visible = false
+position = Vector2(883, 612)
+rotation = -0.785398
+texture = ExtResource("4_2ru2j")
+flip_h = true
+flip_v = true
+
+[node name="guy" type="TextureRect" parent="Player/Player4"]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+texture = ExtResource("5_twv3m")
+flip_h = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Player/Player4"]
+top_level = true
+position = Vector2(1180, 690)
+scale = Vector2(1.6, 1.6)
+collision_layer = 4
+collision_mask = 10
+
+[node name="Area2D" type="Area2D" parent="Player/Player4/CharacterBody2D"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Player4/CharacterBody2D/Area2D"]
+position = Vector2(42.1971, 77.0759)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_hhlnb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Player4/CharacterBody2D"]
+position = Vector2(42.1971, 77.0759)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_hhlnb")
+
+[node name="TextureRect" type="TextureRect" parent="Player/Player4/CharacterBody2D"]
+offset_top = 35.0
+offset_right = 420.0
+offset_bottom = 455.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_dg1ye")
+
+[node name="Stats" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Player1" type="Control" parent="Stats"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 406.0
+offset_bottom = 540.0
+script = ExtResource("3_pi2lh")
+
+[node name="Name" type="RichTextLabel" parent="Stats/Player1"]
+layout_mode = 0
+offset_right = 254.0
+offset_bottom = 53.0
+scale = Vector2(1.6, 1.6)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 44
+bbcode_enabled = true
+text = "[center] Player 1 [/center]"
+scroll_active = false
+
+[node name="Score" type="RichTextLabel" parent="Stats/Player1"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 501.0
+offset_right = 256.0
+offset_bottom = 530.0
+scale = Vector2(1.6, 1.6)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "     Coins: 0
+"
+scroll_active = false
+
+[node name="ArrowStart" type="TextureRect" parent="Stats/Player1"]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 522.0
+offset_right = 389.0
+offset_bottom = 600.0
+rotation = 3.14159
+texture = ExtResource("3_2iydp")
+expand_mode = 1
+
+[node name="ProgressBar" type="PanelContainer" parent="Stats/Player1"]
+layout_mode = 1
+offset_left = 105.0
+offset_top = 98.0
+offset_right = 199.0
+offset_bottom = 491.0
+scale = Vector2(1.0033, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_v7lhr")
+
+[node name="RarityHolder" type="VBoxContainer" parent="Stats/Player1/ProgressBar"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Common" type="Panel" parent="Stats/Player1/ProgressBar/RarityHolder"]
+modulate = Color(0.625597, 0.625597, 0.625597, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="Rare" type="Panel" parent="Stats/Player1/ProgressBar/RarityHolder"]
+modulate = Color(0.207087, 0.581242, 0.89822, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="Epic" type="Panel" parent="Stats/Player1/ProgressBar/RarityHolder"]
+modulate = Color(0.76204, 0.361323, 0.865161, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="Legendary" type="Panel" parent="Stats/Player1/ProgressBar/RarityHolder"]
+modulate = Color(0.899351, 0.673612, 0.228508, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="ArrowPosition" type="Panel" parent="Stats/Player1"]
+visible = false
+layout_mode = 0
+offset_left = 199.0
+offset_top = 482.0
+offset_right = 200.0
+offset_bottom = 483.0
+
+[node name="FishResult" type="PanelContainer" parent="Stats/Player1"]
+visible = false
+layout_mode = 0
+offset_left = 38.0
+offset_top = 134.0
+offset_right = 738.0
+offset_bottom = 314.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe2sy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats/Player1/FishResult"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="Stats/Player1/FishResult/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.25098, 0.678431, 0.215686, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[center] You caught a Common [/center]"
+fit_content = true
+scroll_active = false
+
+[node name="FishResult" type="RichTextLabel" parent="Stats/Player1/FishResult/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.25098, 0.678431, 0.215686, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Fish Name[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Player2" type="Control" parent="Stats"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1514.0
+offset_right = 1920.0
+offset_bottom = 540.0
+script = ExtResource("10_boexo")
+
+[node name="Name" type="RichTextLabel" parent="Stats/Player2"]
+layout_mode = 0
+offset_right = 254.0
+offset_bottom = 53.0
+scale = Vector2(1.6, 1.6)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center] Player 2 [/center]"
+scroll_active = false
+
+[node name="Score" type="RichTextLabel" parent="Stats/Player2"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 501.0
+offset_right = 256.0
+offset_bottom = 530.0
+scale = Vector2(1.6, 1.6)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "     Coins: 0
+"
+scroll_active = false
+
+[node name="ArrowStart" type="TextureRect" parent="Stats/Player2"]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 522.0
+offset_right = 389.0
+offset_bottom = 600.0
+rotation = 3.14159
+texture = ExtResource("3_2iydp")
+expand_mode = 1
+
+[node name="ProgressBar" type="PanelContainer" parent="Stats/Player2"]
+layout_mode = 1
+offset_left = 105.0
+offset_top = 98.0
+offset_right = 199.0
+offset_bottom = 491.0
+scale = Vector2(1.0033, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_v7lhr")
+
+[node name="RarityHolder" type="VBoxContainer" parent="Stats/Player2/ProgressBar"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Common" type="Panel" parent="Stats/Player2/ProgressBar/RarityHolder"]
+modulate = Color(0.625597, 0.625597, 0.625597, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="Rare" type="Panel" parent="Stats/Player2/ProgressBar/RarityHolder"]
+modulate = Color(0.207087, 0.581242, 0.89822, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="Epic" type="Panel" parent="Stats/Player2/ProgressBar/RarityHolder"]
+modulate = Color(0.76204, 0.361323, 0.865161, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="Legendary" type="Panel" parent="Stats/Player2/ProgressBar/RarityHolder"]
+modulate = Color(0.899351, 0.673612, 0.228508, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="ArrowPosition" type="Panel" parent="Stats/Player2"]
+visible = false
+layout_mode = 0
+offset_left = 199.0
+offset_top = 482.0
+offset_right = 200.0
+offset_bottom = 483.0
+
+[node name="FishResult" type="PanelContainer" parent="Stats/Player2"]
+visible = false
+layout_mode = 0
+offset_left = -342.0
+offset_top = 134.0
+offset_right = 358.0
+offset_bottom = 314.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe2sy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats/Player2/FishResult"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="Stats/Player2/FishResult/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.25098, 0.678431, 0.215686, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[center] You caught a Common [/center]"
+fit_content = true
+scroll_active = false
+
+[node name="FishResult" type="RichTextLabel" parent="Stats/Player2/FishResult/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.25098, 0.678431, 0.215686, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Fish Name[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Player3" type="Control" parent="Stats"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_top = 540.0
+offset_right = 406.0
+offset_bottom = 1080.0
+script = ExtResource("11_xkj16")
+
+[node name="Name" type="RichTextLabel" parent="Stats/Player3"]
+layout_mode = 0
+offset_right = 254.0
+offset_bottom = 53.0
+scale = Vector2(1.6, 1.6)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center] Player 3 [/center]"
+scroll_active = false
+
+[node name="Score" type="RichTextLabel" parent="Stats/Player3"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 501.0
+offset_right = 256.0
+offset_bottom = 530.0
+scale = Vector2(1.6, 1.6)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "     Coins: 0
+"
+scroll_active = false
+
+[node name="ArrowStart" type="TextureRect" parent="Stats/Player3"]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 522.0
+offset_right = 389.0
+offset_bottom = 600.0
+rotation = 3.14159
+texture = ExtResource("3_2iydp")
+expand_mode = 1
+
+[node name="ProgressBar" type="PanelContainer" parent="Stats/Player3"]
+layout_mode = 1
+offset_left = 105.0
+offset_top = 98.0
+offset_right = 199.0
+offset_bottom = 491.0
+scale = Vector2(1.0033, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_v7lhr")
+
+[node name="RarityHolder" type="VBoxContainer" parent="Stats/Player3/ProgressBar"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Common" type="Panel" parent="Stats/Player3/ProgressBar/RarityHolder"]
+modulate = Color(0.625597, 0.625597, 0.625597, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="Rare" type="Panel" parent="Stats/Player3/ProgressBar/RarityHolder"]
+modulate = Color(0.207087, 0.581242, 0.89822, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="Epic" type="Panel" parent="Stats/Player3/ProgressBar/RarityHolder"]
+modulate = Color(0.76204, 0.361323, 0.865161, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="Legendary" type="Panel" parent="Stats/Player3/ProgressBar/RarityHolder"]
+modulate = Color(0.899351, 0.673612, 0.228508, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="ArrowPosition" type="Panel" parent="Stats/Player3"]
+visible = false
+layout_mode = 0
+offset_left = 199.0
+offset_top = 482.0
+offset_right = 200.0
+offset_bottom = 483.0
+
+[node name="FishResult" type="PanelContainer" parent="Stats/Player3"]
+visible = false
+layout_mode = 0
+offset_left = 38.0
+offset_top = 134.0
+offset_right = 738.0
+offset_bottom = 314.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe2sy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats/Player3/FishResult"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="Stats/Player3/FishResult/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.25098, 0.678431, 0.215686, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[center] You caught a Common [/center]"
+fit_content = true
+scroll_active = false
+
+[node name="FishResult" type="RichTextLabel" parent="Stats/Player3/FishResult/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.25098, 0.678431, 0.215686, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Fish Name[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Player4" type="Control" parent="Stats"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1514.0
+offset_top = 540.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("12_8hg0b")
+
+[node name="Name" type="RichTextLabel" parent="Stats/Player4"]
+layout_mode = 0
+offset_right = 254.0
+offset_bottom = 53.0
+scale = Vector2(1.6, 1.6)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center] Player 4 [/center]"
+scroll_active = false
+
+[node name="Score" type="RichTextLabel" parent="Stats/Player4"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 501.0
+offset_right = 256.0
+offset_bottom = 530.0
+scale = Vector2(1.6, 1.6)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "     Coins: 0
+"
+scroll_active = false
+
+[node name="ArrowStart" type="TextureRect" parent="Stats/Player4"]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 522.0
+offset_right = 389.0
+offset_bottom = 600.0
+rotation = 3.14159
+texture = ExtResource("3_2iydp")
+expand_mode = 1
+
+[node name="ProgressBar" type="PanelContainer" parent="Stats/Player4"]
+layout_mode = 1
+offset_left = 105.0
+offset_top = 98.0
+offset_right = 199.0
+offset_bottom = 491.0
+scale = Vector2(1.0033, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_v7lhr")
+
+[node name="RarityHolder" type="VBoxContainer" parent="Stats/Player4/ProgressBar"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Common" type="Panel" parent="Stats/Player4/ProgressBar/RarityHolder"]
+modulate = Color(0.625597, 0.625597, 0.625597, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="Rare" type="Panel" parent="Stats/Player4/ProgressBar/RarityHolder"]
+modulate = Color(0.207087, 0.581242, 0.89822, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="Epic" type="Panel" parent="Stats/Player4/ProgressBar/RarityHolder"]
+modulate = Color(0.76204, 0.361323, 0.865161, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="Legendary" type="Panel" parent="Stats/Player4/ProgressBar/RarityHolder"]
+modulate = Color(0.899351, 0.673612, 0.228508, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+theme_override_styles/panel = SubResource("StyleBoxFlat_n42xn")
+
+[node name="ArrowPosition" type="Panel" parent="Stats/Player4"]
+visible = false
+layout_mode = 0
+offset_left = 199.0
+offset_top = 482.0
+offset_right = 200.0
+offset_bottom = 483.0
+
+[node name="FishResult" type="PanelContainer" parent="Stats/Player4"]
+visible = false
+layout_mode = 0
+offset_left = -342.0
+offset_top = 134.0
+offset_right = 358.0
+offset_bottom = 314.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe2sy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats/Player4/FishResult"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="Stats/Player4/FishResult/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.25098, 0.678431, 0.215686, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[center] You caught a Common [/center]"
+fit_content = true
+scroll_active = false
+
+[node name="FishResult" type="RichTextLabel" parent="Stats/Player4/FishResult/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.25098, 0.678431, 0.215686, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Fish Name[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Timer" type="Control" parent="Stats"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 660.0
+offset_right = 1260.0
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Stats/Timer"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = 23.0
+offset_right = -37.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.13548, 1.13548)
+theme_override_styles/panel = SubResource("StyleBoxFlat_s2gcu")
+
+[node name="ColorRect" type="ColorRect" parent="Stats/Timer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.249623, 0.677793, 0.215545, 1)
+
+[node name="Name" type="RichTextLabel" parent="Stats/Timer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+text = "[center] Time Remaining: 1:30 [/center]"
+scroll_active = false
+tab_size = 24
+
+[node name="CurrentLeader" type="Control" parent="Stats"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 660.0
+offset_top = 1000.0
+offset_right = 1260.0
+offset_bottom = 1050.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Stats/CurrentLeader"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_right = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.135, 1.135)
+theme_override_styles/panel = SubResource("StyleBoxFlat_s2gcu")
+
+[node name="ColorRect" type="ColorRect" parent="Stats/CurrentLeader/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.25098, 0.678431, 0.215686, 1)
+
+[node name="Name" type="RichTextLabel" parent="Stats/CurrentLeader/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_mk04g")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+text = "[center] Current Leader: Nobody! [/center]"
+scroll_active = false
+tab_size = 24
+
+[node name="TimeRemaining" type="Timer" parent="Stats"]
+wait_time = 91.0
+one_shot = true
+
+[node name="Results" type="Node2D" parent="."]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="MainMenuContainer" type="MarginContainer" parent="Results"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 100
+
+[node name="ColorRect" type="ColorRect" parent="Results/MainMenuContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Results/MainMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Results/MainMenuContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="Results/MainMenuContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("7_mk04g")
+theme_override_font_sizes/font_size = 130
+theme_override_styles/normal = SubResource("StyleBoxFlat_w77w0")
+text = "Results!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FirstPlace" type="Label" parent="Results/MainMenuContainer/MarginContainer/VBoxContainer"]
+modulate = Color(0.25098, 0.678431, 0.215686, 1)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("7_mk04g")
+theme_override_font_sizes/font_size = 95
+text = "1st: Player 1 with 0 Coins!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecondPlace" type="Label" parent="Results/MainMenuContainer/MarginContainer/VBoxContainer"]
+visible = false
+modulate = Color(0.25098, 0.678431, 0.215686, 1)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("7_mk04g")
+theme_override_font_sizes/font_size = 95
+text = "2nd: Player 2 with 0 Coins!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThirdPlace" type="Label" parent="Results/MainMenuContainer/MarginContainer/VBoxContainer"]
+visible = false
+modulate = Color(0.25098, 0.678431, 0.215686, 1)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("7_mk04g")
+theme_override_font_sizes/font_size = 95
+text = "3rd: Player 3 with 0 Coins!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FourthPlace" type="Label" parent="Results/MainMenuContainer/MarginContainer/VBoxContainer"]
+visible = false
+modulate = Color(0.25098, 0.678431, 0.215686, 1)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("7_mk04g")
+theme_override_font_sizes/font_size = 95
+text = "4th: Player 4 with 0 Coins :("
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Results/MainMenuContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Container2" type="Container" parent="Results/MainMenuContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ExitToMenu" type="Button" parent="Results/MainMenuContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_mk04g")
+theme_override_font_sizes/font_size = 95
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_cwba0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xeopv")
+text = " Exit Game "
+
+[node name="Container" type="Container" parent="Results/MainMenuContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_42457")
+volume_db = 5.0
+
+[node name="StartMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_lji8r")
+volume_db = 5.0
+
+[node name="EndMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_6ygsm")
+volume_db = 5.0
+
+[node name="ResultsMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_8wwuu")
+volume_db = 5.0
+
+[connection signal="add_score" from="." to="Stats/Player1" method="_on_game_add_score"]
+[connection signal="add_score" from="." to="Stats/Player2" method="_on_game_add_score"]
+[connection signal="add_score" from="." to="Stats/Player3" method="_on_game_add_score"]
+[connection signal="add_score" from="." to="Stats/Player4" method="_on_game_add_score"]
+[connection signal="remove_score" from="." to="Stats/Player1" method="_on_game_remove_score"]
+[connection signal="remove_score" from="." to="Stats/Player2" method="_on_game_remove_score"]
+[connection signal="remove_score" from="." to="Stats/Player3" method="_on_game_remove_score"]
+[connection signal="remove_score" from="." to="Stats/Player4" method="_on_game_remove_score"]
+[connection signal="start_fishing" from="." to="Stats/Player1" method="_on_game_start_fishing"]
+[connection signal="start_fishing" from="." to="Stats/Player2" method="_on_game_start_fishing"]
+[connection signal="start_fishing" from="." to="Stats/Player3" method="_on_game_start_fishing"]
+[connection signal="start_fishing" from="." to="Stats/Player4" method="_on_game_start_fishing"]
+[connection signal="stop_fishing" from="." to="Stats/Player1" method="_on_game_stop_fishing"]
+[connection signal="stop_fishing" from="." to="Stats/Player2" method="_on_game_stop_fishing"]
+[connection signal="stop_fishing" from="." to="Stats/Player3" method="_on_game_stop_fishing"]
+[connection signal="stop_fishing" from="." to="Stats/Player4" method="_on_game_stop_fishing"]
+[connection signal="send_score_to_main" from="Stats/Player1" to="." method="_on_player_1_send_score_to_main"]
+[connection signal="send_score_to_main" from="Stats/Player2" to="." method="_on_player_2_send_score_to_main"]
+[connection signal="send_score_to_main" from="Stats/Player3" to="." method="_on_player_3_send_score_to_main"]
+[connection signal="send_score_to_main" from="Stats/Player4" to="." method="_on_player_4_send_score_to_main"]
+[connection signal="timeout" from="Stats/TimeRemaining" to="." method="_on_time_remaining_timeout"]
