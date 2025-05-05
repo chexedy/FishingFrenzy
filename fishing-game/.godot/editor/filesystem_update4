@@ -1,8 +1,3 @@
-res://main.gd
-res://FishGame.tscn
-res://pond.gd
-res://player_3.gd
-res://player_1.gd
-res://player_2.gd
-res://fish_game.gd
 res://MainMenu.tscn
+res://FishGame.tscn
+res://main.gd

@@ -99,14 +99,6 @@ text = "Fishing Frenzy! "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MenuNode/MainMenuContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_fp0in")
-theme_override_font_sizes/font_size = 30
-text = "chexedy | Rutgers COGS | Spring 2025"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="RightSide" type="VBoxContainer" parent="MenuNode/MainMenuContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -492,7 +484,7 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_fp0in")
 theme_override_font_sizes/font_size = 35
-text = "Use the left joystick to aim your hook. Once you are ready,  cast it into the water. If you successfully capture a fish, be ready to reel it in. If not, try again!"
+text = "Use the Arrow Keys/WASD to aim your hook. Once you are ready, cast it into the water with E/P. If you successfully capture a fish, be ready to reel it in. If not, try again!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -594,7 +586,7 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_fp0in")
 theme_override_font_sizes/font_size = 35
-text = "After you have hooked your fish, time your catch in the bar to the side. The better your timing, the better your catch! Exclusive fish are worth more coins."
+text = "After you have hooked your fish, time your catch in the bar to the side with E/P. The better your timing, the better your catch! Exclusive fish are worth more coins."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -617,6 +609,24 @@ offset_bottom = 121.0
 scale = Vector2(3.24, 3.24)
 theme_override_font_sizes/font_size = 20
 text = "X"
+
+[node name="MasterAudio" type="Node2D" parent="."]
+z_index = 1
+metadata/_edit_lock_ = true
+
+[node name="Audio" type="Button" parent="MasterAudio"]
+offset_left = 1684.0
+offset_top = 885.0
+offset_right = 1786.0
+offset_bottom = 987.0
+focus_neighbor_top = NodePath("../FishLibrary")
+focus_neighbor_bottom = NodePath("../Rules")
+focus_next = NodePath("../Rules")
+focus_previous = NodePath("../FishLibrary")
+theme_override_fonts/font = ExtResource("2_fp0in")
+theme_override_font_sizes/font_size = 40
+text = "Audio
+On"
 
 [node name="MenuAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_ri6ef")

@@ -1,37 +1,38 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1746302837
-arrow.png::CompressedTexture2D::2473568813274511980::1744559920::1744560885::1::::<><>::
-banner.png::CompressedTexture2D::464306800984248903::1746302831::1746302840::1::::<><>::
-boat2.png::CompressedTexture2D::4508759268672970052::1745459265::1746220486::1::::<><>::
-boat.png::CompressedTexture2D::705147539521515314::1744559920::1744560885::1::::<><>::
-crosshair.webp::CompressedTexture2D::624057147200594709::1744559920::1744560885::1::::<><>::
-end.mp3::AudioStreamMP3::1681044260601375022::1746238717::1746238766::1::::<><>::
-export_presets.cfg::TextFile::-1::1746241354::0::1::::<><>::
-fish2.png::CompressedTexture2D::6700470790064557851::1745459265::1746220486::1::::<><>::
-fish.gd::GDScript::-1::1745459265::0::1::::<>Node2D<>::
-Fish.tscn::PackedScene::1067829660576559715::1745459265::0::1::::<><>::res://fish.gd<>uid://c2p01l4cytw6n::::res://fish2.png
-fisher.png::CompressedTexture2D::6812236497059209759::1745459265::1746220486::1::::<><>::
-FishGame.tscn::PackedScene::37058576602253113::1746302739::0::1::::<><>::res://fish_game.gd<>uid://16tecv3yr8u::::res://grass.png<>res://pond.gd<>uid://bbihk1n4lphjw::::res://arrow.png<>uid://bnqiywb2kbeum::::res://water.png<>res://player_1.gd<>uid://b5icuvau7ysb1::::res://boat2.png<>uid://c7hxj6uolnsme::::res://guy.png<>uid://i5keolbesqxx::::res://crosshair.webp<>uid://chr1vkhpw6yla::::res://Super Lobster.ttf<>res://player_2.gd<>uid://dcfy6i3r4ea0q::::res://fishmusic.mp3<>uid://bjctndqdx2vir::::res://start.mp3<>uid://x7ks2xug2ssk::::res://end.mp3<>uid://ufxcc5pbdt6k::::res://results.mp3
-fishing_rod.png::CompressedTexture2D::3755637303666220917::1744559920::1744560885::1::::<><>::
-fishmusic.mp3::AudioStreamMP3::7311474658815752562::1746237669::1746237767::1::::<><>::
-fish_eyes.png::CompressedTexture2D::1656380370692865134::1744559920::1744560885::1::::<><>::
-fish_game.gd::GDScript::-1::1746302571::0::1::::<>Node2D<>::
-fish_no_eyes.png::CompressedTexture2D::3685788652925940982::1744559920::1744560885::1::::<><>::
-grass.png::CompressedTexture2D::55590192641042394::1746220361::1746220486::1::::<><>::
-guy.png::CompressedTexture2D::7034749230831700156::1744559920::1744560885::1::::<><>::
-icon.svg::CompressedTexture2D::4600869538112875356::1740545209::1741996112::1::::<><>::
-library.gd::GDScript::-1::1744984994::0::1::::LibraryData<>Node<>::
-main.gd::GDScript::-1::1746302741::0::1::::<>Node2D<>::
-MainMenu.tscn::PackedScene::6867411211216798995::1746302739::0::1::::<><>::res://main.gd<>uid://chr1vkhpw6yla::::res://Super Lobster.ttf<>uid://c2p01l4cytw6n::::res://fish2.png<>uid://bbihk1n4lphjw::::res://arrow.png<>uid://bnqiywb2kbeum::::res://water.png<>uid://i5keolbesqxx::::res://crosshair.webp<>uid://x73p5lcgrf78::::res://menu.mp3
-Marimpa.ttf::FontFile::5584627281834815097::1744559920::1744560885::1::::<><>::
-menu.mp3::AudioStreamMP3::1682131947303608925::1746221095::1746233953::1::::<><>::
-player_1.gd::GDScript::-1::1746241354::0::1::::<>Control<>::
-player_2.gd::GDScript::-1::1746241354::0::1::::<>Control<>::
-pond.gd::GDScript::-1::1746241354::0::1::::<>Node2D<>::
-pond.jpg::CompressedTexture2D::5714325957676231155::1741996090::1741996112::1::::<><>::
-results.mp3::AudioStreamMP3::1415498976026226428::1746239098::1746301673::1::::<><>::
-sprite_2d.gd::GDScript::-1::1743578990::0::1::::<>Sprite2D<>::
-start.mp3::AudioStreamMP3::3023426052581887389::1746238715::1746238766::1::::<><>::
-Super Lobster.ttf::FontFile::5300874374914685518::1744559920::1744560885::1::::<><>::
-water.json::JSON::-1::1745459265::0::1::::<><>::
-water.png::CompressedTexture2D::3332435448346999692::1745459265::1746220486::1::::<><>::
+::res://::1746408133
+arrow.png::CompressedTexture2D::2473568813274511980::1746407939::1746408134::1::::<><>::
+banner.png::CompressedTexture2D::464306800984248903::1746407939::1746408134::1::::<><>::
+boat2.png::CompressedTexture2D::4508759268672970052::1746407939::1746408134::1::::<><>::
+boat.png::CompressedTexture2D::705147539521515314::1746407939::1746408134::1::::<><>::
+crosshair.webp::CompressedTexture2D::624057147200594709::1746407939::1746408134::1::::<><>::
+end.mp3::AudioStreamMP3::1681044260601375022::1746407939::1746408134::1::::<><>::
+export_presets.cfg::TextFile::-1::1746407939::0::1::::<><>::
+fish2.png::CompressedTexture2D::6700470790064557851::1746407939::1746408134::1::::<><>::
+fish.gd::GDScript::-1::1746407939::0::1::::<>Node2D<>::
+Fish.tscn::PackedScene::1067829660576559715::1746407939::0::1::::<><>::res://fish.gd<>uid://c2p01l4cytw6n::::res://fish2.png
+fisher.png::CompressedTexture2D::6812236497059209759::1746407939::1746408134::1::::<><>::
+FishGame.tscn::PackedScene::37058576602253113::1746407939::0::1::::<><>::res://fish_game.gd<>uid://16tecv3yr8u::::res://grass.png<>res://pond.gd<>uid://bbihk1n4lphjw::::res://arrow.png<>uid://bnqiywb2kbeum::::res://water.png<>res://player_1.gd<>uid://b5icuvau7ysb1::::res://boat2.png<>uid://c7hxj6uolnsme::::res://guy.png<>uid://i5keolbesqxx::::res://crosshair.webp<>uid://chr1vkhpw6yla::::res://Super Lobster.ttf<>res://player_2.gd<>uid://dcfy6i3r4ea0q::::res://fishmusic.mp3<>uid://bjctndqdx2vir::::res://start.mp3<>uid://x7ks2xug2ssk::::res://end.mp3<>uid://ufxcc5pbdt6k::::res://results.mp3
+fishing_rod.png::CompressedTexture2D::3755637303666220917::1746407939::1746408134::1::::<><>::
+fishmusic.mp3::AudioStreamMP3::7311474658815752562::1746407939::1746408134::1::::<><>::
+fish_eyes.png::CompressedTexture2D::1656380370692865134::1746407939::1746408134::1::::<><>::
+fish_game.gd::GDScript::-1::1746407939::0::1::::<>Node2D<>::
+fish_no_eyes.png::CompressedTexture2D::3685788652925940982::1746407939::1746408134::1::::<><>::
+grass.png::CompressedTexture2D::55590192641042394::1746407939::1746408134::1::::<><>::
+guy.png::CompressedTexture2D::7034749230831700156::1746407939::1746408134::1::::<><>::
+icon.svg::CompressedTexture2D::4600869538112875356::1746407939::1746408134::1::::<><>::
+library.gd::GDScript::-1::1746407939::0::1::::LibraryData<>Node<>::
+logo.png::CompressedTexture2D::2216486168901063825::1746407939::1746408134::1::::<><>::
+main.gd::GDScript::-1::1746407939::0::1::::<>Node2D<>::
+MainMenu.tscn::PackedScene::6867411211216798995::1746407939::0::1::::<><>::res://main.gd<>uid://chr1vkhpw6yla::::res://Super Lobster.ttf<>uid://c2p01l4cytw6n::::res://fish2.png<>uid://bbihk1n4lphjw::::res://arrow.png<>uid://bnqiywb2kbeum::::res://water.png<>uid://i5keolbesqxx::::res://crosshair.webp<>uid://x73p5lcgrf78::::res://menu.mp3
+Marimpa.ttf::FontFile::5584627281834815097::1746407939::1746408134::1::::<><>::
+menu.mp3::AudioStreamMP3::1682131947303608925::1746407939::1746408134::1::::<><>::
+player_1.gd::GDScript::-1::1746407939::0::1::::<>Control<>::
+player_2.gd::GDScript::-1::1746407939::0::1::::<>Control<>::
+pond.gd::GDScript::-1::1746407939::0::1::::<>Node2D<>::
+pond.jpg::CompressedTexture2D::5714325957676231155::1746407939::1746408134::1::::<><>::
+results.mp3::AudioStreamMP3::1415498976026226428::1746407939::1746408134::1::::<><>::
+sprite_2d.gd::GDScript::-1::1746407939::0::1::::<>Sprite2D<>::
+start.mp3::AudioStreamMP3::3023426052581887389::1746407939::1746408134::1::::<><>::
+Super Lobster.ttf::FontFile::5300874374914685518::1746407939::1746408134::1::::<><>::
+water.json::JSON::-1::1746407939::0::1::::<><>::
+water.png::CompressedTexture2D::3332435448346999692::1746407939::1746408134::1::::<><>::

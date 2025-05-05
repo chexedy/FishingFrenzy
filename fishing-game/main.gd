@@ -1,6 +1,7 @@
 # Main Menu controller
 extends Node2D
 var data_array;
+var audio_enabled = true;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +13,7 @@ func _ready() -> void:
 	self.get_node("RulesNode").get_node("Close").pressed.connect(close_rules);
 	buttons.get_node("StartGame").pressed.connect(start_the_game);
 	buttons.get_node("StartGame").grab_focus();
+	self.get_node("MasterAudio").get_node("Audio").pressed.connect(set_master_audio);
 
 func _input(event: InputEvent) -> void:
 	var buttons = self.get_node("MenuNode").get_node("MainMenuContainer").get_node("HBoxContainer").get_node("RightSide").get_node("MarginContainer").get_node("Buttons");
@@ -52,7 +54,8 @@ func start_the_game() -> void:
 	self.get_node("MenuAudio").playing = false;
 	
 	self.add_child(game);
-
+	self.move_child(self.get_node("MasterAudio"), -1)
+	
 	game.visible = true;
 	self.get_node("MenuNode").visible = false;
 	self.get_node("FishLibraryNode").visible = false;
@@ -82,3 +85,15 @@ func open_rules() -> void:
 func close_rules() -> void:
 	self.get_node("RulesNode").visible = false;
 	self.get_node("MenuNode").get_node("MainMenuContainer").get_node("HBoxContainer").get_node("RightSide").get_node("MarginContainer").get_node("Buttons").get_node("Rules").grab_focus();
+
+func set_master_audio() -> void:
+	if audio_enabled:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -999);
+		audio_enabled = false
+		self.get_node("MasterAudio").get_node("Audio").text = "Audio
+Off"
+	else:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), 0);
+		self.get_node("MasterAudio").get_node("Audio").text = "Audio
+On"
+		audio_enabled = true;

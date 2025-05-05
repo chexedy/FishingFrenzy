@@ -168,7 +168,7 @@ rotation = -0.785398
 texture = ExtResource("4_2ru2j")
 
 [node name="guy" type="TextureRect" parent="Player/Player1"]
-modulate = Color(1, 1, 0, 1)
+modulate = Color(1, 0, 0, 1)
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 192.0
@@ -201,7 +201,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_hhlnb")
 
 [node name="TextureRect" type="TextureRect" parent="Player/Player1/CharacterBody2D"]
-modulate = Color(1, 1, 0, 1)
+modulate = Color(1, 0, 0, 1)
 offset_top = 35.0
 offset_right = 420.0
 offset_bottom = 455.0
@@ -214,7 +214,7 @@ rotation = 0.785398
 texture = ExtResource("4_2ru2j")
 
 [node name="guy" type="TextureRect" parent="Player/Player2"]
-modulate = Color(1, 0.647059, 0, 1)
+modulate = Color(0, 0, 1, 1)
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 192.0
@@ -246,7 +246,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_hhlnb")
 
 [node name="TextureRect" type="TextureRect" parent="Player/Player2/CharacterBody2D"]
-modulate = Color(1, 0.647059, 0, 1)
+modulate = Color(0, 0, 1, 1)
 offset_top = 35.0
 offset_right = 420.0
 offset_bottom = 455.0
